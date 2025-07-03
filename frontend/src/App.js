@@ -6,8 +6,8 @@ const server = 'ws://127.0.0.1:8088';
 const domain = 'dragons.local';
 
 const dragonsConfig = {
-  smaug: { uri: `sip:1001@${domain}` },
-  fafnir: { uri: `sip:1002@${domain}` },
+  fuira_da_noite: { uri: `sip:1001@${domain}` },
+  pesadelo_monstruoso: { uri: `sip:1002@${domain}` },
 };
 
 function App() {
@@ -165,8 +165,8 @@ function App() {
         {!isRegistered ? (
           <div className="control-box">
             <h3>Escolha seu Dragão:</h3>
-            <button onClick={() => handleRegister('smaug')}>🔥 Smaug (1001)</button>
-            <button onClick={() => handleRegister('fafnir')}>❄️ Fafnir (1002)</button>
+            <button onClick={() => handleRegister('fuira_da_noite')}>🌑 Fúria da Noite (1001)</button>
+            <button onClick={() => handleRegister('pesadelo_monstruoso')}>🔥 Pesadelo Monstruoso (1002)</button>
           </div>
         ) : (
           <div className="control-box">
@@ -187,17 +187,6 @@ function App() {
             <button onClick={handleAcceptCall}>✅ Aceitar</button>
           </div>
         )}
-
-        <div className="audio-streams">
-          <div>
-            <h3>🎧 Áudio Remoto</h3>
-            <audio ref={remoteAudioRef} autoPlay />
-          </div>
-          <div>
-            <h3>🎤 Sua Voz</h3>
-            <audio ref={localAudioRef} muted autoPlay />
-          </div>
-        </div>
       </header>
     </div>
   );
