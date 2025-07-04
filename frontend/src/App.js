@@ -131,14 +131,20 @@ function App() {
 
         pc.ontrack = (event) => {
           console.log("ontrack acionado");
-          remoteAudioRef.current.srcObject = event.streams[0];
+          if (remoteAudioRef.current) {
+            remoteAudioRef.current.srcObject = event.streams[0];
+          } else {
+            console.warn("remoteAudioRef ainda não existe no ontrack");
+          }
         };
       }
 
       if (state === 'Establishing') {
         try {
           const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-          localAudioRef.current.srcObject = stream;
+          if (localAudioRef.current) {
+            localAudioRef.current.srcObject = stream;
+          }
 
           if (pc) {
             stream.getTracks().forEach(track => pc.addTrack(track, stream));
@@ -187,6 +193,10 @@ function App() {
             <button onClick={handleAcceptCall}>✅ Aceitar</button>
           </div>
         )}
+
+        {/* Elementos de áudio para reprodução */}
+        <audio ref={remoteAudioRef} autoPlay />
+        <audio ref={localAudioRef} autoPlay muted />
       </header>
     </div>
   );
