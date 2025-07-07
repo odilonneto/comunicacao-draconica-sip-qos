@@ -104,3 +104,7 @@ npm start
 - [x] Código documentado para fins acadêmicos
 
 ---
+
+## 👤 Acadêmicos
+1. Allef Fernandes Santos
+2. Odilon Ramos da Silva Neto
